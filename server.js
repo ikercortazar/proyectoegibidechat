@@ -21,8 +21,9 @@ app.get("/numero/:nume", function (req, res) {
 app.get("/aleatorio", function (req, res) {
   set_attributes:
     {
-        alea : Math.random().toFixed(0)
+        var alea= (Math.random() *100 + 1).toFixed(0)
     }
+    res.json(alea);
 });
 
 app.get("/numero/:nume/:elegido", function (req, res) {
