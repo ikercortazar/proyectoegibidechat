@@ -10,10 +10,11 @@ app.listen(PORT, function() {
 app.get("/numero/:nume", function (req, res) {
     var jsonResponse = [];
     var valor = req.params.nume;
-    if (valor == 500)
-        jsonResponse.push("Has acertado")
+    var alea = (Math.random() * 9 + 1).toFixed(0);
+    if (valor == alea)
+        jsonResponse.push("Has acertado. Yo también estaba pensando en el número " + alea)
     else
-    jsonResponse.push({ "text": "Hi. " + (Math.random() * 5 + 1).toFixed(0) + " is a lucky number...  ♥"+ req.params.nume});
+    jsonResponse.push({ "text": "No es ese número. Estaba pensando en "+ alea});
     res.send(jsonResponse);
 });
 
@@ -34,5 +35,13 @@ app.get("/numero/:nume/:elegido", function (req, res) {
         jsonResponse.push("Has acertado")
     else
         jsonResponse.push({ "text": "Hi. " + valor + " " + valor2});
+    res.send(jsonResponse);
+});
+
+
+app.get("/inicio/:num", function (req, res) {
+    var jsonResponse = [];
+    var valor = req.param("num","5");
+    jsonResponse.push({"text": "Vale " + valor});
     res.send(jsonResponse);
 });
