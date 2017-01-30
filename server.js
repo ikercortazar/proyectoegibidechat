@@ -12,9 +12,9 @@ app.get("/numero/:nume", function (req, res) {
     var valor = req.params.nume;
     var alea = (Math.random() * 9 + 1).toFixed(0);
     if (valor == alea)
-        jsonResponse.push("Has acertado. Yo también estaba pensando en el número " + alea)
+        jsonResponse.push({text: "Has acertado. Yo también estaba pensando en el número " + alea})
     else
-    jsonResponse.push({ "text": "No es ese número. Estaba pensando en "+ alea});
+    jsonResponse.push({ "text": "No es ese número. Estaba pensando en el número "+ alea});
     res.send(jsonResponse);
 });
 
